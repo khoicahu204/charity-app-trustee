@@ -7,6 +7,7 @@ import { DonationCaseModule } from './donation-case/donation-case.module';
 import { DonationCase } from './donation-case/donation-case.entity';
 import { DonationTransaction } from './donation-transaction/donation-transaction.entity';
 import { User } from './user/user.entity';
+import { DonationTransactionModule } from './donation-transaction/donation-transaction.module';
 console.log('💥 AppModule loaded');
 console.log('✅ Importing AuthModule...');
 
@@ -21,6 +22,7 @@ console.log('✅ Importing AuthModule...');
     AuthModule,
     UserModule,
     DonationCaseModule,
+    DonationTransactionModule,
   ],
 })
 export class AppModule {}

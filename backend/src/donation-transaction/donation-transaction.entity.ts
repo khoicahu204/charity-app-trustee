@@ -22,6 +22,6 @@ import {
     @ManyToOne(() => User, (user) => user.donations, { eager: true })
     donor: User;
   
-    @ManyToOne(() => DonationCase, { eager: true })
+    @ManyToOne(() => DonationCase, (donationCase) => donationCase.donationTransactions, { eager: true, onDelete: 'CASCADE' })
     donationCase: DonationCase;
   }

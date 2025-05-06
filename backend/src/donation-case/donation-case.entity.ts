@@ -3,9 +3,15 @@ import {
     PrimaryGeneratedColumn,
     Column,
     ManyToOne,
+    OneToMany,
     CreateDateColumn,
   } from 'typeorm';
+ 
+
   import { User } from '../user/user.entity';
+  import { DonationTransaction } from '../donation-transaction/donation-transaction.entity';
+  
+
   
   @Entity()
   export class DonationCase {
@@ -29,4 +35,7 @@ import {
   
     @Column({ default: 'pending' })
     status: 'pending' | 'approved' | 'rejected';
+
+    @OneToMany(() => DonationTransaction, (tx) => tx.donationCase)
+    donationTransactions: DonationTransaction[];
   }

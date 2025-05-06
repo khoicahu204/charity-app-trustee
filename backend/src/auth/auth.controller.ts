@@ -2,7 +2,7 @@ import { Controller, Post, Body, UseGuards, Get, Req } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { Request } from 'express';  
-import { User as UserDecorator } from './user.decorator'; // tránh trùng với entity
+import { User as UserDecorator } from '../common/decorators/user.decorator'; // tránh trùng với entity
 
 
 
