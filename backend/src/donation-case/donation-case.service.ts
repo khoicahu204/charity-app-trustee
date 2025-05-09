@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, ForbiddenException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { DonationCase } from './donation-case.entity';
 import { Repository } from 'typeorm';
@@ -72,13 +76,17 @@ export class DonationCaseService {
   async getCaseDetail(id: number) {
     const caseData = await this.caseRepo.findOne({
       where: { id },
-      relations: ['createdBy', 'donationTransactions', 'donationTransactions.donor'],
+      relations: [
+        'createdBy',
+        'donationTransactions',
+        'donationTransactions.donor',
+      ],
     });
-  
+
     if (!caseData) {
       throw new NotFoundException('Không tìm thấy case này');
     }
-  
+
     return caseData;
   }
 
@@ -120,11 +128,11 @@ export class DonationCaseService {
 
   async deleteCase(id: number) {
     const caseToDelete = await this.caseRepo.findOneBy({ id });
-  
+
     if (!caseToDelete) {
       throw new NotFoundException('Case không tồn tại');
     }
-  
+
     await this.caseRepo.remove(caseToDelete);
     return { message: 'Xoá thành công' };
   }
@@ -134,15 +142,15 @@ export class DonationCaseService {
       where: { id },
       relations: ['createdBy'], // cần để check user
     });
-  
+
     if (!donationCase) {
       throw new NotFoundException('Case không tồn tại');
     }
-  
+
     if (donationCase.createdBy.id !== user.id) {
       throw new ForbiddenException('Bạn không có quyền sửa case này');
     }
-  
+
     Object.assign(donationCase, updates);
     return this.caseRepo.save(donationCase);
   }
