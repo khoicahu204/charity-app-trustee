@@ -1,0 +1,42 @@
+# Android Studio
+.idea/
+*.iml
+.gradle/
+build/
+local.properties
+captures/
+.externalNativeBuild/
+
+# Gradle
+.gradle/
+build/
+**/build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Kotlin/Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Log & temp
+*.log
+*.tmp
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Keystore and signing
+*.jks
+*.keystore
+
+# Crashlytics / Firebase
+crashlytics-build.properties
+fabric.properties
+
+# Others
+*.apk
+*.ap_
+*.db
